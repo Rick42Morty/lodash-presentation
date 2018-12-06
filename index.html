@@ -1,0 +1,362 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>LoDash for RSS</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<style>
+		.hljs.custom {
+			font-size: 16px;
+			line-height: 24px;
+		}
+
+		.hljs.large.code {
+			font-size: 36px;
+			line-height: 40px;
+		}
+
+
+		.left.small {
+			text-align: left;
+			font-size: 20px;
+		}
+
+		.small-list>li {
+			font-size: 34px;
+		}
+
+		p.medium {
+			font-size: 26px;
+		}
+	</style>
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>_.Lodash</h1>
+				<h3>for Rolling Scopes School</h3>
+				<p><br> by Yarotski Yauheni</p>
+			</section>
+			<section>
+				<h2>Plan</h2>
+				<ol>
+					<li class="fragment">What is Lodash?</li>
+					<li class="fragment">Why should you use Lodash?</li>
+					<li class="fragment">Adding Lodash to a project</li>
+					<li class="fragment">Usage examples</li>
+				</ol>
+			</section>
+			<section>
+				<h2>What is Lodash?</h2>
+				<p>A modern JavaScript utility library delivering modularity, performance & extras.</p>
+				<ul>
+					<li>Initiall release - April 23, 2012</li>
+					<li>Almost 16 millions weekly npm downloads</li>
+					<li>Almost 80k npm dependents</li>
+					<li>More than 36k stars on GitHub</li>
+					<li>Full build - only 24kB gzipped</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Why should you use Lodash?</h2>
+				<ul class="small-list">
+					<li class="fragment">It's more perfomant than anything you are going to write</li>
+					<li class="fragment">It's more readable than anything you are going to write</li>
+					<li class="fragment">It's a lot more concise than anything you are going to write</li>
+					<li class="fragment">It's supported in all browsers, even really old ones</li>
+					<li class="fragment">It helps you solve your problems while keeping your code semantic and DRY</li>
+				</ul>
+			</section>
+			<section>
+				<p>Adding Lodash to a project</p>
+				<p class="left small">In a browser:</p>
+				<pre><code class="hljs custom" data-trim>
+								<script src="lodash.js"></script>								
+								<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+						</code></pre>
+				<p class="left small">Using npm:</p>
+				<pre><code class="hljs custom" data-trim>
+ $ npm i -g npm
+ $ npm i --save lodash
+						</code></pre>
+				<p class="left small">In Node.js:</p>
+				<pre><code class="hljs custom" data-trim>
+// Load the full build.
+var _ = require('lodash');
+// Load the core build.
+var _ = require('lodash/core');
+// Load the FP build for immutable auto-curried iteratee-first data-last methods.
+var fp = require('lodash/fp'); 
+// Load method categories.
+var array = require('lodash/array');
+var object = require('lodash/fp/object'); 
+// Cherry-pick methods for smaller browserify/rollup/webpack bundles.
+var at = require('lodash/at');
+var curryN = require('lodash/fp/curryN');
+					</code></pre>
+			</section>
+			<section>
+				<h3>Awesome <a href="https://lodash.com/docs/4.17.11">Documentation</a></h3>
+				<p>Array, Collection, Date, Function, Lang, Math, Number, Object, Seq, Sting, Util, Properties, Methods</p>
+				<pre><code class="hljs large code" data-trim>
+						_.funcName(argument, iteratee)
+				</code></pre>				
+				<p><br> Main function families: <br>
+					is*,    stub*,    to*,   *By,   *In,  sorted*, <br>
+					 *Depth,   *Right,   *With,   *While
+
+				</p>
+				
+				</ul>
+			</section>
+			<section>
+				<p>Array methods</p>
+				<p class="medium">fill, concat, pull, join, slice, sum, max, min, mean, ...</p>
+				<p class="left small">_.compact(array)</p>
+				<pre><code class="hljs custom" data-trim>
+_.compact([5, 0, undefined, NaN, 16, 'Rick', null, false, 2, '', 3]);
+// => [5, 16, "Rick", 2, 3]		
+						</code></pre>
+				<p class="left small">_.take(array, [n=1])</p>
+				<pre><code class="hljs custom" data-trim>
+								_.take([1, 2, 3]);
+								// => [1]								 
+								_.take([1, 2, 3], 2);
+								// => [1, 2]								 
+								_.take([1, 2, 3], 5);
+								// => [1, 2, 3]								 
+								_.take([1, 2, 3], 0);
+								// => []										
+						</code></pre>
+				<p class="left small">_.flattenDeep(array)</p>
+				<pre><code class="hljs custom" data-trim>
+								_.flattenDeep([1, [2, [3, [4]], 5]]);
+								// => [1, 2, 3, 4, 5]				
+						</code></pre>
+			</section>
+			<section>
+				<p>Object methods</p>
+				<p class="medium">assign, at, keys, forIn, keys, values, ...</p>
+				<p class="left small">Object manipulation</p>
+				<pre><code class="hljs custom" data-trim>
+								var item = {"a":{"b":{"c":3}}};
+ 
+								_.get(item, 'a.b.c', 3);
+								// → 3
+								
+								_.set(item, 'a.b.c', 5);
+								// → {"a":{"b":{"c":5}}}
+								
+								_.has(item, 'a.b.c.d');
+							 // → false
+								 
+				</code></pre>
+				<p class="left small">_.fromPairs(pairs)</p>
+				<pre><code class="hljs custom" data-trim>
+						_.fromPairs([['a', 1], ['b', 2]]);
+						// => { 'a': 1, 'b': 2 }								 
+				</code></pre>
+			</code></pre>
+			<p class="left small">_.toPairs(object)</p>
+			<pre><code class="hljs custom" data-trim>
+					_.toPairs([{ 'a': 1, 'b': 2 }]);
+					// => [['a', 1], ['b', 2]]								 
+			</code></pre>
+			</section>
+			<section>
+					<p>Collection methods</p>
+					<p class="medium">map, reduce, filter, some, every, forEach (aka each), size, ...</p>
+					<p class="left small">_.sortBy( )</p>
+				<pre><code class="hljs custom" data-trim>
+var users = [
+  { 'user': 'fred',   'age': 48 },
+  { 'user': 'barney', 'age': 36 },
+  { 'user': 'fred',   'age': 40 },
+  { 'user': 'barney', 'age': 34 } ]
+ 
+_.sortBy(users, [ o => o.user ]);
+// => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
+
+_.sortBy(users, 'age');
+// => objects for [['barney', 34], ['barney', 36], ['fred', 40], ['fred', 48]]
+ 
+_.sortBy(users, ['user', 'age']);
+// => objects for [['barney', 34], ['barney', 36], ['fred', 40], ['fred', 48]]
+					</code></pre>
+					<p class="left small">_.size(collection)</p>
+				<pre><code class="hljs custom" data-trim>
+						_.size([1, 2, 3]);			        // => 3						 
+						_.size({ 'a': 1, 'b': 2 });			// => 2						 
+						_.size('pebbles');				// => 7
+				</code></pre>
+			</section>
+			<section>
+				<p>Strings and Numbers</p>
+				<p class="medium">round, sum, multiply, camelCase, snakeCase, kebabCase, trim, pad, ...</p>
+				<p class="left small">_.random([lower=0], [upper=1], [floating])</p>
+				<pre><code class="hljs custom" data-trim>
+						_.random(0, 5);
+						// => an integer between 0 and 5						 
+						_.random(5);
+						// => also an integer between 0 and 5						 
+						_.random(5, true);
+						// => a floating-point number between 0 and 5						 
+						_.random(1.2, 5.2);
+						// => a floating-point number between 1.2 and 5.2
+				</code></pre>
+				<p class="left small">_.words([string=''], [pattern])</p>
+				<pre><code class="hljs custom" data-trim>
+_.words('fred, barney, & pebbles');
+// => ['fred', 'barney', 'pebbles'] 
+_.words('fred, barney, & pebbles', /[^, ]+/g);
+// => ['fred', 'barney', '&', 'pebbles']
+				</code></pre>
+				<p class="left small">_.deburr([string=''])</p>
+				<pre><code class="hljs custom" data-trim>
+						_.deburr('déjà vu');
+						// => 'deja vu'
+				</code></pre>
+			</section>
+			<section>
+					<p>Just some methods I like</p>
+				<p class="left small">_.cloneDeep( )</p>
+				<pre><code class="hljs custom" data-trim>
+							var original = { foo: "bar" };
+							var copy = _.cloneDeep(original);
+
+							copy.foo = "new value";
+
+							// copy -> { foo: "new value" } 
+							// original -> { foo: "bar" }  Yeah!							
+					</code></pre>
+					<p class="left small">_.groupBy(collection, [iteratee=_.identity])</p>
+					<pre><code class="hljs custom" data-trim>
+							_.groupBy([6.1, 4.2, 6.3], Math.floor);
+							// => { '4': [4.2], '6': [6.1, 6.3] }
+							 
+							// The `_.property` iteratee shorthand.
+							_.groupBy(['one', 'two', 'three'], 'length');
+							// => { '3': ['one', 'two'], '5': ['three'] }
+					</code></pre>				
+			</section>
+			<section>
+				<p class="left small">_.uniq(array)</p>
+				<pre><code class="hljs custom" data-trim>
+			_.uniq([2, 1, 2, 23, 5, 5, 2, 17, 15, 17]);
+			// => [2, 1, 23, 5, 17, 15]							
+				</code></pre>
+				<p class="left small">_.uniqueId( )</p>
+				<pre><code class="hljs custom" data-trim>
+											_.uniqueId('contact_');
+											// => 'contact_104'
+											 
+											_.uniqueId( );
+											// => '105'		
+				</code></pre>
+				<p class="left small">_.times(n, [iteratee=_.identity])</p>
+				<pre><code class="hljs custom" data-trim>
+						_.times(3, String);
+						// => ['0', '1', '2']
+						
+						_.times(10, Number)
+						// => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+						_.times(8, () => _.random(100));
+						// => [10, 0, 23, 2, 50, 57, 60, 36]
+				</code></pre>
+			</section>
+			<section>
+				<p>It's time for some chaining!</p>
+				<pre><code class="hljs custom" data-trim>
+					var users = [
+						{ 'user': 'barney',  'age': 36 },
+						{ 'user': 'fred',    'age': 40 },
+						{ 'user': 'rick',    'age': 18 },
+						{ 'user': 'pebbles', 'age': 11 }
+					];
+
+					// explicit chaining
+					var youngest = _
+					 .chain(users)
+					 .sortBy('age')
+					 .map( o => o.user + ' is ' + o.age )
+					 .head()
+					 .value();  // => 'pebbles is 11'
+					</code></pre>
+					<pre><code class="hljs custom" data-trim>
+					// implicit chaining
+					_(users)
+					 .sortBy('age')
+					 .map( o => o.user + ' is ' + o.age )
+					 .head();  // => 'pebbles is 11'
+				</code></pre>				
+			</section>
+			<section>
+				<p >Find sum of squares of three largest non-equal numbers in an arbitrarily nested array</p>
+				<pre><code class="hljs custom" data-trim>
+					const arr = [1, [7, 5, 2], [2, [3, [4]], 5], 17];	
+
+					_.chain(arr)
+					.flattenDeep()    // -> [1, 7, 5, 2, 2, 3, 4, 5, 17]
+					.uniq()           // -> [1, 7, 5, 2, 3, 4, 17]
+					.sortBy()         // -> [1, 2, 3, 4, 5, 7, 17]
+					.takeRight(3)     // -> [5, 7, 17]
+					.map(el => el*el) // -> [25, 49, 289]
+					.sum()
+					.value();         // -> 363
+				</code></pre>
+				<pre><code class="hljs custom" data-trim>
+					_(arr)
+					.flattenDeep()
+					.uniq()
+					.sortBy()
+					.takeRight(3)
+					.map(el => el*el)
+					.sum();   // -> 363
+				</code></pre>				
+			</section>
+			<section>
+				<h2>thank you!</h2>
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
+</html>
