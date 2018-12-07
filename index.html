@@ -56,7 +56,10 @@
 				<h1>_.Lodash</h1>
 				<h3>for Rolling Scopes School</h3>
 				<p><br> by Yarotski Yauheni</p>
-			</section>
+				<aside class="notes">
+					Hi, everyone! My name is Eugene, and today we’ll talk about LoDash library
+				</aside>
+			</section>			
 			<section>
 				<h2>Plan</h2>
 				<ol>
@@ -65,6 +68,13 @@
 					<li class="fragment">Adding Lodash to a project</li>
 					<li class="fragment">Usage examples</li>
 				</ol>
+			<aside class="notes">
+				Here’s the plan of my presentation
+1. First, we’ll find out what Lodash is.
+2. Then, we’ll answer the question Why should you use Lodash?
+3. After that, we’ll learn about different ways of Adding Lodash to your project.
+4. And finally, we’ll look at some Lodash usage examples
+			</aside>
 			</section>
 			<section>
 				<h2>What is Lodash?</h2>
@@ -76,6 +86,15 @@
 					<li>More than 36k stars on GitHub</li>
 					<li>Full build - only 24kB gzipped</li>
 				</ul>
+				<aside class="notes">
+					So, What is Lodash?
+It’s a modern JavaScript utility library delivering modularity, performance & extras.
+It was initially released in 2012, so it’s already 6 years old.
+As you can see, it has almost 16 millions weekly npm downloads and almost 80 thousands npm dependents. It’s one of the most depended on libraries in JS. It means that although you may have never dealt with Lodash library itself, you are probably using it indirectly all the time.
+And it has more than 36ooo stars on GitHub, people obviously love it.
+It’s full build version will take only 24kB of memory space.
+OK, we’ve figured out that LoDash is a mature js library, extremely popular and light-weight.
+				</aside>
 			</section>
 			<section>
 				<h2>Why should you use Lodash?</h2>
@@ -86,6 +105,15 @@
 					<li class="fragment">It's supported in all browsers, even really old ones</li>
 					<li class="fragment">It helps you solve your problems while keeping your code semantic and DRY</li>
 				</ul>
+				<aside class="notes">
+					So, why should you use Lodash?
+Well, it's more performant than anything you are going to write
+It's more readable than anything you are going to write
+It's a lot more concise than anything you are going to write
+It's supported in all browsers and environments, even really old ones
+It helps you solve your problems while keeping your code semantic and DRY (which stands for don’t repeat yourself principle)
+So, why don’t we check it out?
+				</aside>
 			</section>
 			<section>
 				<p>Adding Lodash to a project</p>
@@ -114,6 +142,13 @@ var fp = require('lodash/fp');
 var array = require('lodash/array');
 var object = require('lodash/fp/object');
 					</code></pre>
+					<aside class="notes">
+						At first, let us learn about different ways of Adding Lodash to your project.
+You can add it in a browser by inserting the script tag in your html. You can either use link to the files on your host, or you can use the cdn version.
+You can install it with npm just like we install everything with npm.
+And, In Node.js you can add Lodash like this. As you can see, there are a lot of options. You can require the whole library, or, for example only the module, that contains functions for working with Arrays, or you can even require just one function you need.
+By the way, you can also use a cdn link to get a particular module or function, just like with Node.
+					</aside>
 			</section>
 			<section>
 				<h3>Awesome <a href="https://lodash.com/docs/4.17.11">Documentation</a></h3>
@@ -126,8 +161,15 @@ var object = require('lodash/fp/object');
 					 *Depth,   *Right,   *With,   *While
 
 				</p>
-				
-				</ul>
+				<aside class="notes">
+					Lodash library has really Awesome Documentation. It’s well-structured and has lots of examples, it’s divided into next sections:
+Array, Collection, Date, Function, Lang, Math, Number, Object, Seq, String, Util, Properties, Methods
+I’ve watched several YouTube tutorials on Lodash, and in most cases it’s easier and faster to just check out the documentation, to find out what a particular function actually does.
+In most cases, Lodash functions are used like this:
+_.funcName(argument, iteratee)
+Of course, there are too many functions in Lodash for a usual man to remember, but in most cases function names are pretty straightforward, and we can say, there are several function families, grouped according to some similar logic:
+For example, isSmth checks if the argument is Smth, sorted* functions are optimized for working with sorted Arrays, and *Depth functions can control the depth of some recursive operations.
+				</aside>
 			</section>
 			<section>
 				<p>Array methods</p>
@@ -154,6 +196,14 @@ _.compact([5, 0, undefined, NaN, 16, 'Rick', null, false, 2, '', 3]);
 								_.flattenDeep([1, [2, [3, [4]], 5]]);
 								// => [1, 2, 3, 4, 5]				
 						</code></pre>
+						<aside class="notes">
+							Now, let us look at some Array methods.
+You may have already noticed, that Lodash duplicates a lot of methods, that most browsers already understand without Lodash, such as forEach, map, filter, etc. In most cases, Lodash equivalents were created earlier, and their current implementations are pretty smart. If Lodash notices, that browser already has some function, it lets browser implementation of this function do the job, otherwise, it uses its own implementation.
+Here are some Array methods I find useful:
+_.compact method removes all the faulty values from an array
+_take method creates a slice of array with n elements taken from the beginning. There’s also takeRight method, that takes the elements from the end of an array.
+_.flattenDeep method recursively flattens array.
+						</aside>
 			</section>
 			<section>
 				<p>Object methods</p>
@@ -183,6 +233,11 @@ _.compact([5, 0, undefined, NaN, 16, 'Rick', null, false, 2, '', 3]);
 					_.toPairs([{ 'a': 1, 'b': 2 }]);
 					// => [['a', 1], ['b', 2]]								 
 			</code></pre>
+			<aside class="notes">
+				Here are some Object methods.
+We can perform object manipulation with get and set functions, which speak for themselves, and we can check if an object has some property with has function.
+There is also toPairs function, that can turn an object into an array of pairs, and fromPairs function, that turns this array back into object
+			</aside>
 			</section>
 			<section>
 					<p>Collection methods</p>
@@ -210,6 +265,11 @@ _.sortBy(users, ['user', 'age']);
 						_.size({ 'a': 1, 'b': 2 });			// => 2						 
 						_.size('pebbles');				// => 7
 				</code></pre>
+				<aside class="notes">
+					Here are some Collection methods.
+sortBy method can sort collections with some specified function, with a key name, or even with several key names, in wich case it performs a sort like SQL would do it.
+size method returns the length of an array, object or string
+				</aside>
 			</section>
 			<section>
 				<p>Strings and Numbers</p>
@@ -235,6 +295,10 @@ _.words('fred, barney, & pebbles', /[^, ]+/g);
 						_.deburr('déjà vu');
 						// => 'deja vu'
 				</code></pre>
+				<aside class="notes">
+					There are also a lot of methods for working with Strings and Numbers.
+For example, a random method is a fast way of generating random data, words method turns a string into an array of words this string contains, and deburr method turns all the weird Latin latters into normal Latin letters.
+				</aside>
 			</section>
 			<section>
 					<p>Just a couple of methods I like</p>
@@ -259,6 +323,11 @@ _.words('fred, barney, & pebbles', /[^, ]+/g);
 						_.times(8, () => _.random(100));
 						// => [10, 0, 23, 2, 50, 57, 60, 36]
 				</code></pre>
+				<aside class="notes">
+					Here is just a couple of methods I like.
+With cloneDeep method, we can create an independent copy of an object. It means, that if you create a copy of an object with deepClone, and then change it somehow, it won’t take any effect on the original object.
+And times method can run any function n times. I find it useful when I need to generate some data. As you can see in my examples, it’s really easy to generate a usual array, or an array, consisting of random numbers.
+				</aside>
 			</section>
 			<section>
 				<p>It's time for some chaining!</p>
@@ -284,7 +353,13 @@ _.words('fred, barney, & pebbles', /[^, ]+/g);
 					 .sortBy('age')
 					 .map( o => o.user + ' is ' + o.age )
 					 .head();  // => 'pebbles is 11'
-				</code></pre>				
+				</code></pre>	
+				<aside class="notes">
+					And for desert let us have a look at couple chaining examples.
+Let us assume that we want to get a string, telling us the name and the age of the youngest user in a collection of objects.
+We can do it easily with the help of Lodash chain function. We can use it either explicitly, or implicitly. When doing it explicitly, we first need to wrap our collection of users with chain method. After that goes the series of Lodash functions, and we have to call value() method at the end of the chain, in order to actually get the result.
+With implicit chaining syntax, we don’t need the chain keyword itself, and we also don’t need the value() at the end of the chain. We can just stop the chain of methods at any moment.
+				</aside>			
 			</section>
 			<section>
 				<p >Find sum of squares of three largest non-equal numbers in an arbitrarily nested array</p>
@@ -308,11 +383,20 @@ _.words('fred, barney, & pebbles', /[^, ]+/g);
 					.takeRight(3)
 					.map(el => el*el)
 					.sum();   // -> 363
-				</code></pre>				
+				</code></pre>		
+				<aside class="notes">
+					Here is one more chaining example. Let us imagine that for some reason we need to find a sum of squares of three largest non-equal numbers in an arbitrarily nested array. Without Lodash, it would probably take me some time, and my code would be long and not very good-looking.
+With Lodash, I just think about what should I do with the array, not about implementation of all the functions. OK, I guess I’ll flatten it first, then get rid of repeating values, sort it, take last three values of the sorted array, square them up, and then sum up the squares.
+That’s it! Job is done! The code doesn’t even look like a code, it looks like a plan or a list of actions we are planning to do. I think that’s exactly what Lodash was made for.
+Of course, Lodash deserves more than a 10 minutes talk, but that’s all we have today. I hope I’ve at least inspired you to look through Lodash docs once more.
+				</aside>		
 			</section>
 			<section>
 				<h2>thank you!</h2>
 				<footer style='font-size: 28px;'><br><br><br> GitHub <a href="https://github.com/Rick42Morty">Rick42Morty</a> </footer>
+				<aside class="notes">
+					That’s all for today, thank you for your attention!
+				</aside>
 			</section>
 		</div>
 	</div>
