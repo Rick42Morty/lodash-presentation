@@ -103,16 +103,16 @@
 				<pre><code class="hljs custom" data-trim>
 // Load the full build.
 var _ = require('lodash');
+
 // Load the core build.
 var _ = require('lodash/core');
+
 // Load the FP build for immutable auto-curried iteratee-first data-last methods.
 var fp = require('lodash/fp'); 
+
 // Load method categories.
 var array = require('lodash/array');
-var object = require('lodash/fp/object'); 
-// Cherry-pick methods for smaller browserify/rollup/webpack bundles.
-var at = require('lodash/at');
-var curryN = require('lodash/fp/curryN');
+var object = require('lodash/fp/object');
 					</code></pre>
 			</section>
 			<section>
@@ -137,16 +137,17 @@ var curryN = require('lodash/fp/curryN');
 _.compact([5, 0, undefined, NaN, 16, 'Rick', null, false, 2, '', 3]);
 // => [5, 16, "Rick", 2, 3]		
 						</code></pre>
-				<p class="left small">_.take(array, [n=1])</p>
+				<p class="left small">_.take(array, [n=1]) / _.takeRight(array, [n=1])</p>
 				<pre><code class="hljs custom" data-trim>
-								_.take([1, 2, 3]);
+								_.take([1, 2, 3, 8, 5]);
 								// => [1]								 
-								_.take([1, 2, 3], 2);
-								// => [1, 2]								 
-								_.take([1, 2, 3], 5);
-								// => [1, 2, 3]								 
-								_.take([1, 2, 3], 0);
-								// => []										
+								_.take([1, 2, 3, 8, 5], 2);
+								// => [1, 2]
+
+								_.takeRight([1, 2, 3, 8, 5]);
+								// => [5]								 
+								_.takeRight([1, 2, 3, 8, 5], 3);
+								// => [3, 8, 5]										
 						</code></pre>
 				<p class="left small">_.flattenDeep(array)</p>
 				<pre><code class="hljs custom" data-trim>
@@ -216,13 +217,11 @@ _.sortBy(users, ['user', 'age']);
 				<p class="left small">_.random([lower=0], [upper=1], [floating])</p>
 				<pre><code class="hljs custom" data-trim>
 						_.random(0, 5);
-						// => an integer between 0 and 5						 
+						// => an integer between 0 and 5
 						_.random(5);
-						// => also an integer between 0 and 5						 
+						// => also an integer between 0 and 5
 						_.random(5, true);
-						// => a floating-point number between 0 and 5						 
-						_.random(1.2, 5.2);
-						// => a floating-point number between 1.2 and 5.2
+						// => a floating-point number between 0 and 5
 				</code></pre>
 				<p class="left small">_.words([string=''], [pattern])</p>
 				<pre><code class="hljs custom" data-trim>
@@ -238,7 +237,7 @@ _.words('fred, barney, & pebbles', /[^, ]+/g);
 				</code></pre>
 			</section>
 			<section>
-					<p>Just some methods I like</p>
+					<p>Just a couple of methods I like</p>
 				<p class="left small">_.cloneDeep( )</p>
 				<pre><code class="hljs custom" data-trim>
 							var original = { foo: "bar" };
@@ -249,30 +248,6 @@ _.words('fred, barney, & pebbles', /[^, ]+/g);
 							// copy -> { foo: "new value" } 
 							// original -> { foo: "bar" }  Yeah!							
 					</code></pre>
-					<p class="left small">_.groupBy(collection, [iteratee=_.identity])</p>
-					<pre><code class="hljs custom" data-trim>
-							_.groupBy([6.1, 4.2, 6.3], Math.floor);
-							// => { '4': [4.2], '6': [6.1, 6.3] }
-							 
-							// The `_.property` iteratee shorthand.
-							_.groupBy(['one', 'two', 'three'], 'length');
-							// => { '3': ['one', 'two'], '5': ['three'] }
-					</code></pre>				
-			</section>
-			<section>
-				<p class="left small">_.uniq(array)</p>
-				<pre><code class="hljs custom" data-trim>
-			_.uniq([2, 1, 2, 23, 5, 5, 2, 17, 15, 17]);
-			// => [2, 1, 23, 5, 17, 15]							
-				</code></pre>
-				<p class="left small">_.uniqueId( )</p>
-				<pre><code class="hljs custom" data-trim>
-											_.uniqueId('contact_');
-											// => 'contact_104'
-											 
-											_.uniqueId( );
-											// => '105'		
-				</code></pre>
 				<p class="left small">_.times(n, [iteratee=_.identity])</p>
 				<pre><code class="hljs custom" data-trim>
 						_.times(3, String);
@@ -337,6 +312,7 @@ _.words('fred, barney, & pebbles', /[^, ]+/g);
 			</section>
 			<section>
 				<h2>thank you!</h2>
+				<footer style='font-size: 28px;'><br><br><br> GitHub <a href="https://github.com/Rick42Morty">Rick42Morty</a> </footer>
 			</section>
 		</div>
 	</div>
